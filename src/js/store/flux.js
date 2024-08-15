@@ -1,14 +1,15 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			favorites: [],
 			demo: [
 				{
 					title: "FIRST",
-					background: "white",
-					initial: "white"
+					background: "green",
+					initial: "green"
 				},
 				{
-					title: "SECOND",
+					title: "Yojan",
 					background: "white",
 					initial: "white"
 				}
@@ -37,6 +38,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			addFavoriteCharacter: (characterName) => {
+
+				const store = getStore();
+
+				if( ! store.favorites.includes(characterName) ){
+					setStore({ favorites: [ ...store.favorites, characterName ] })
+				}
+			},
+
+			removeFavoriteCharacter: (characterName) => {
+				const store = getStore();
+
+				setStore({ favorites: store.favorites.filter( name => name != characterName )})
 			}
 		}
 	};
