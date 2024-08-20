@@ -1,4 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
+
+import { Link } from "react-router-dom";
+
 import { Context } from "./../store/appContext"
 
 //create your first component
@@ -67,6 +70,13 @@ const Home = () => {
 											Ki: {item.ki}
 										</small>
 									</p>
+
+									<Link to={`/personaje/${item.id}`}>
+										<button className="btn btn-info m-2">
+											Details
+										</button>
+									</Link>
+
 									<button className="btn btn-warning"
 										onClick={()=>{
 											actions.addFavoriteCharacter(item.name);
